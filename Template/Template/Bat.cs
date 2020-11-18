@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Tutorial010.Models;
 
 namespace Template
 {
@@ -15,21 +14,21 @@ namespace Template
         public Bat(Texture2D texture) 
           : base(texture)
         {
-            Speed = 10f; //hastighet på bats
+            speed = 10f; //hastighet på bats
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites) //röra på bats
         {
             if (Keyboard.GetState().IsKeyDown(Input.Up))
-                Velocity.Y = -Speed;
+                velocity.Y = -speed;
             else if (Keyboard.GetState().IsKeyDown(Input.Down))
-                Velocity.Y = Speed;
+                velocity.Y = speed;
 
-            Position += Velocity;
+            position += velocity;
 
-            Position.Y = MathHelper.Clamp(Position.Y, 0, Game1.hojd - _texture.Height); //så dem stannar vid kanterna på skärmen
+            position.Y = MathHelper.Clamp(position.Y, 0, Game1.hojd - _texture.Height); //så dem stannar vid kanterna på skärmen
 
-            Velocity = Vector2.Zero;
+            velocity = Vector2.Zero;
         }
     }
 }

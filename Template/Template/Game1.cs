@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using Tutorial010.Models;
 
 namespace Template
 {
@@ -24,7 +23,11 @@ namespace Template
         private Texture2D ball;
 
         private List<Sprite> sprites;
-        public static Random Random;
+        public static Random Random
+        {
+            get;
+            private set;
+        }
 
         //KOmentar
         public Game1()
@@ -122,8 +125,8 @@ namespace Template
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
-            spriteBatch.Begin(); //skriver ut hur stor min bakgrund ska vara och skärmen och hur den ska se ut
-            Rectangle backgroundRec = new Rectangle();
+            spriteBatch.Begin(); //startar spritebatch så jag kan skriva ut saker
+            Rectangle backgroundRec = new Rectangle(); //skriver ut hur stor min bakgrund ska vara och skärmen och hur den ska se ut
             backgroundRec.Location = backgroundpos.ToPoint();
             backgroundRec.Size = new Point(bredd, hojd);
             spriteBatch.Draw(background, backgroundRec, Color.White);
